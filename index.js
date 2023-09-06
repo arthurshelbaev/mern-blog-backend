@@ -42,7 +42,10 @@ app.post("/upload", checkAuth, upload.single("image"), (req, res) => {
 app.listen(4444, (err) => {
     err ? console.log(err) : console.log("Server activated.");
 })
+app.get("/tags", PostController.getLastTags)
+
 app.get("/posts", PostController.getAll)
+app.get("/posts/tags", PostController.getLastTags)
 app.get("/posts/:id", PostController.getOne)
 app.post("/posts", checkAuth, postCreateValidation, handleValidationErrors, PostController.create)
 app.delete("/posts/:id", PostController.remove)
